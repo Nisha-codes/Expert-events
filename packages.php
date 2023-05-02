@@ -9,7 +9,7 @@
   </head>
   <body class="pack">
     <section class="container">
-      <h2 class="center-text welcome">Chilling Loccini has hacked your website baby</h2>
+      <h2 class="center-text welcome">Our Packages</h2>
 
       <div class="packages">
         <div class="package-card p1">
@@ -22,7 +22,7 @@
               Vendors booking
             </li>
          </ul>
-          <a href="bookpackage.html" class="btn btn-nav1">Book event</a>
+          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
         <div class="package-card p2">
           <p class="package-heading">SILVER</p>
@@ -43,7 +43,7 @@
             Ushers
             </li>
           </ul>
-          <a href="bookpackage.html" class="btn btn-nav1">Book event</a>
+          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
         <div class="package-card p3">
           <p class="package-heading">GOLD</p>
@@ -68,7 +68,7 @@
               Transportation
             </li>
           </ul>
-          <a href="bookpackage.html" class="btn btn-nav1">Book event</a>
+          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
         <div class="package-card p4">
           <p class="package-heading">PLATINUM</p>
@@ -96,7 +96,7 @@
               After party
             </li>
           </ul>
-          <a href="bookpackage.html" class="btn btn-nav1">Book event</a>
+          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
       </div>
     </section>

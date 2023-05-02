@@ -1,3 +1,9 @@
+<?php
+session_start();
+$logged_in  = isset($_SESSION['auth_user']);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,12 +20,21 @@
       </a>
       <nav class="main-nav">
         <ul class="main-nav-list">
-          <li><a class="main-nav-link" href="packages.html">Packages</a></li>
-          <li><a class="main-nav-link" href="signIn.html">Create Account</a></li>
+          <li><a class="main-nav-link" href="packages.php">Packages</a></li>
+            <?php
+                if (!$logged_in){
+            ?>
+          <li><a class="main-nav-link" href="signup.php">Create Account</a></li>
           <li>
-            <a class="main-nav-link" href="logIn.html">Log in</a>
+            <a class="main-nav-link" href="signin.php">Log in</a>
           </li>
+            <?php }?>
           <li><a class="main-nav-link" href="#sub">Contact Us</a></li>
+            <?php
+            if ($logged_in){
+            ?>
+            <li><a class="main-nav-link" href="signout.php">Logout</a></li>
+            <?php }?>
           <!-- <li>
             <a class="main-nav-link nav-cta" href="#cta">Try for free!</a>
           </li> -->
@@ -62,7 +77,7 @@
         <h3 class="center-text">Testimonials</h3>
         <h2 class="center-text">
       What our customers are saying</h2>
-   
+
       <div class="testimonials">
         <figure class="testimonial">
           <img class="testimonial-img" src="img/hannah.jpg" alt="customer" />
@@ -102,7 +117,7 @@
           <div>
             <p class="footer-heading">ACCOUNT</p>
             <ul class="footer-list">
-            <li><a class="footer-link" href="signIn.html">Create Account</a></li>
+            <li><a class="footer-link" href="signup.php">Create Account</a></li>
             <li><a class="footer-link" href="Login.html">Log In </a></li>
             </ul>
           </div>
