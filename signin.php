@@ -89,19 +89,17 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expert-Events</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+   </head>
 <body class="login">
 <form class="signin-form" action="" method="post">
     <?php
     if($error!=''){
         ?>
-        <div class="alert alert-danger  fade show" role="alert">
+        <div class="alert" >
             <div id="error"><?=$error?></div>
         </div>
     <?php }?>
+
     <div>
         <label for="email">Email address</label>
         <input
