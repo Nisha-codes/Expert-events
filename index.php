@@ -86,7 +86,7 @@
           <div>
             <p class="footer-heading">ACCOUNT</p>
             <ul class="footer-list">
-            <li><a class="footer-link" href="signup.php">Create Account</a></li>
+            <li><a class="footer-link" href="auth/users/signup.php">Create Account</a></li>
             <li><a class="footer-link" href="Login.html">Log In </a></li>
             </ul>
           </div>

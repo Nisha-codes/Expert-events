@@ -25,7 +25,7 @@
               Vendors booking
             </li>
          </ul>
-          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
+          <a href="users/bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
         <div class="package-card p2">
           <p class="package-heading">SILVER</p>
@@ -46,7 +46,7 @@
             Ushers
             </li>
           </ul>
-          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
+          <a href="users/bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
         <div class="package-card p3">
           <p class="package-heading">GOLD</p>
@@ -71,7 +71,7 @@
               Transportation
             </li>
           </ul>
-          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
+          <a href="users/bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
         <div class="package-card p4">
           <p class="package-heading">PLATINUM</p>
@@ -99,7 +99,7 @@
               After party
             </li>
           </ul>
-          <a href="bookpackage.php" class="btn btn-nav1">Book event</a>
+          <a href="users/bookpackage.php" class="btn btn-nav1">Book event</a>
         </div>
       </div>
     </section>

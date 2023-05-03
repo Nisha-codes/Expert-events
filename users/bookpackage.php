@@ -4,7 +4,7 @@ session_start();
 
 if(!isset($_SESSION['auth_user'])){
     $_SESSION['booking'] = 1;
-    header("Location:signin.php");
+    header("Location:../auth/users/signin.php");
 }
 
 
@@ -15,8 +15,8 @@ $success_msg = '';
 if(isset($_POST['submit'])){
 
 
-    include 'includes/cleanInputs.php';
-    include 'includes/database.php';
+    include '../includes/cleanInputs.php';
+    include '../includes/database.php';
 
 
     $package = $_POST['package'];
@@ -45,30 +45,45 @@ if(isset($_POST['submit'])){
 
         $cleanPackage = cleanUserInput($_POST['package']);
         $cleanType = cleanUserInput($_POST['type']);
-        $cleanDate = sha1(cleanUserInput($_POST['date']));
+        $cleanDate = cleanUserInput($_POST['date']);
         $cleanTime = cleanUserInput($_POST['time']);
         $cleanGuests = cleanUserInput($_POST['guests']);
-        $cleanAddinfo = sha1(cleanUserInput($_POST['add-info']));
+        $cleanAddinfo = cleanUserInput($_POST['add-info']);
 
+        // Check for date and time availability
 
         try {
-            $sql = "insert into events (package,type,date,time,no_of_guests,additional_info,user_id) values(
-                    '$cleanPackage','$cleanType','$cleanDate','$cleanTime','$cleanGuests','$cleanAddinfo','$auth_user_id')";
-            $dbc = mysqli_query($con,$sql);
-            if($dbc){
+            $dateAvailabiltySql = "select * from events where date = '$cleanDate' and time = '$cleanTime' ";
+            $check = mysqli_query($con,$dateAvailabiltySql);
 
-                echo "
+            if($check){
+                if ($check->num_rows > 0){
+                    $error = 'Oops, An event had already been booked for the date and time selected';
+                }
+                else{
+                    // Proceed to book event
+                    try {
+                        $sql = "insert into events (package,type,date,time,no_of_guests,additional_info,user_id) values(
+                               '$cleanPackage','$cleanType','$cleanDate','$cleanTime','$cleanGuests','$cleanAddinfo','$auth_user_id')";
+                        $dbc = mysqli_query($con,$sql);
+                        if($dbc){
+                            echo "
                     <script type=\"text/javascript\">
                       alert('Hurray!, Your event has been booked successfully');
                       window.location='bookpackage.php'
                     </script>";
+                        }
+
+                    } catch (mysqli_sql_exception $ex) {
+                        $error = 'Error encountered, try again later';
+                    }
+                }
             }
 
         } catch (mysqli_sql_exception $ex) {
             $error = 'Error encountered, try again later';
 
         }
-
 
     }
 
@@ -86,10 +101,10 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expert-Events</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
 
   </head>
-  <?php include_once 'includes/navbar.php' ?>
+  <?php include_once '../includes/navbar.php' ?>
   <body class="bookpackage">
     <form class="signin-form book-form" method="post" action="">
         <?php

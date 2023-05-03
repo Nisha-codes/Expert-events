@@ -7,14 +7,14 @@ $error = '';
 session_start();
 
 if(isset($_SESSION['auth_user'])){
-    header("Location:index.php");
+    header("Location:../../users/users-dashboard.php");
 }
 
 if(isset($_POST['submit'])){
 
 
-    include 'includes/cleanInputs.php';
-    include 'includes/database.php';
+    include '../../includes/cleanInputs.php';
+    include '../../includes/database.php';
 
 
     $email = $_POST['email'];
@@ -41,6 +41,7 @@ if(isset($_POST['submit'])){
             if($dbc->num_rows>0){
                 unset($_SESSION['email']);
                 while($row = mysqli_fetch_array($dbc)){
+                    // just in a case we log in as a user on a browser where we've already logged in as an admin while testing
                     if(isset($_SESSION['auth_admin'])){
                         unset($_SESSION['auth_admin']);
                     }
@@ -62,7 +63,7 @@ if(isset($_POST['submit'])){
                     echo "
                       <script type=\"text/javascript\">
                         // alert('You are logged in');
-                        window.location='../../index.php'
+                        window.location='../../users/users-dashboard.php'
                       </script>";
                 }
 
@@ -88,7 +89,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expert-Events</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../style.css" />
    </head>
 <body class="login">
 <form class="signin-form" action="" method="post">

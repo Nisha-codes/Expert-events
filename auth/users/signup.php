@@ -7,14 +7,14 @@ $error = '';
 session_start();
 
 if(isset($_SESSION['auth_user'])){
-    header("Location:index.php");
+    header("Location:../../users/users-dashboard.php");
 }
 
 if(isset($_POST['submit'])){
 
 
-    include 'includes/cleanInputs.php';
-    include 'includes/database.php';
+    include '../../includes/cleanInputs.php';
+    include '../../includes/database.php';
 
 
     $full_name = $_POST['full_name'];
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expert-Events</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../style.css" />
   </head>
   <body class="login">
     <form class="signin-form" action="" method="post">

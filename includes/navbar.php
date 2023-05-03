@@ -11,16 +11,16 @@ $logged_in  = isset($_SESSION['auth_user']);
             <?php
             if (!$logged_in){
                 ?>
-                <li><a class="main-nav-link" href="../signup.php">Create Account</a></li>
+                <li><a class="main-nav-link" href="../auth/users/signup.php">Create Account</a></li>
                 <li>
-                    <a class="main-nav-link" href="../signin.php">Log in</a>
+                    <a class="main-nav-link" href="../auth/users/signin.php">Log in</a>
                 </li>
             <?php }?>
             <li><a class="main-nav-link" href="#sub">Contact Us</a></li>
             <?php
             if ($logged_in){
                 ?>
-                <li><a class="main-nav-link" href="../signout.php">Logout</a></li>
+                <li><a class="main-nav-link" href="../auth/users/signout.php">Logout</a></li>
             <?php }?>
 
         </ul>
