@@ -339,7 +339,7 @@ td a {
   font-weight: 600;
 }
 table {
-  width: 800px;
+  width: 100%;
   margin-bottom: 20px;
   border-collapse: collapse;
 }
@@ -375,5 +375,55 @@ tbody tr:nth-child(even) {
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
+
+.view-link a{
+  text-decoration: none;
+}
+
+.view-link  a:hover{
+  color:#c64b70;
+}
+
+.remove-link a:hover{
+  color:#c64b70;
+}
+
+.event-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.event-row {
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+  padding-bottom: 10px;
+}
+
+.event-column {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.event-details .value{
+  margin-top: 10px;
+  opacity: 0.5;
+}
+
+.guest-name {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: none;
+  outline: none;
+}
+
+.guest-name::placeholder {
+  color: #999;
+}
+
 
 

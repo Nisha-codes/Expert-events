@@ -26,6 +26,16 @@ if(isset($_POST['submit'])){
     $guests = $_POST['guests'];
     $additional_info = $_POST['add-info'];
 
+
+    $_SESSION['selected_package'] =  $_POST['package'];
+    $_SESSION['selected_event_type'] =  $_POST['type'];
+    $_SESSION['guests'] =  $_POST['guests'];
+    $_SESSION['date'] =  $_POST['date'];
+    $_SESSION['time'] =  $_POST['time'];
+    $_SESSION['add-info'] =  $_POST['add-info'];
+
+
+
     if($package == ''){
         $error = 'Please select a package';
     }
@@ -41,6 +51,9 @@ if(isset($_POST['submit'])){
     elseif($guests == ''){
         $error = 'Please select number of guests';
     }
+    elseif(!is_numeric($guests)){
+        $error = 'Number of guests must be a number';
+    }
     else{
 
         $cleanPackage = cleanUserInput($_POST['package']);
@@ -51,7 +64,6 @@ if(isset($_POST['submit'])){
         $cleanAddinfo = cleanUserInput($_POST['add-info']);
 
         // Check for date and time availability
-
         try {
             $dateAvailabiltySql = "select * from events where date = '$cleanDate' and time = '$cleanTime' ";
             $check = mysqli_query($con,$dateAvailabiltySql);
@@ -67,11 +79,19 @@ if(isset($_POST['submit'])){
                                '$cleanPackage','$cleanType','$cleanDate','$cleanTime','$cleanGuests','$cleanAddinfo','$auth_user_id')";
                         $dbc = mysqli_query($con,$sql);
                         if($dbc){
+
+                            unset($_SESSION['selected_package']);
+                            unset($_SESSION['selected_event_type']);
+                            unset($_SESSION['guests']);
+                            unset($_SESSION['date']);
+                            unset($_SESSION['time']);
+                            unset($_SESSION['add-info']);
+
                             echo "
-                    <script type=\"text/javascript\">
-                      alert('Hurray!, Your event has been booked successfully');
-                      window.location='bookpackage.php'
-                    </script>";
+                                <script type=\"text/javascript\">
+                                  alert('Hurray!, Your event has been booked successfully');
+                                  window.location='bookpackage.php'
+                                </script>";
                         }
 
                     } catch (mysqli_sql_exception $ex) {
@@ -122,12 +142,13 @@ if(isset($_POST['submit'])){
           id="select-package"
           placeholder="select package"
         >
-          <option value="">select</option>
-          <option value="Bronze">Bronze</option>
-          <option value="Silver">Silver</option>
-          <option value="Gold">Gold</option>
-          <option value="Platinum">Platinum</option>
-        </select>
+                <option value="">select</option>
+                <option value="Bronze"<?php if (isset($_SESSION['selected_package']) && $_SESSION['selected_package'] == 'Bronze') { echo ' selected'; } ?>>Bronze</option>
+                <option value="Silver"<?php if (isset($_SESSION['selected_package']) && $_SESSION['selected_package'] == 'Silver') { echo ' selected'; } ?>>Silver</option>
+                <option value="Gold"<?php if (isset($_SESSION['selected_package']) && $_SESSION['selected_package'] == 'Gold') { echo ' selected'; } ?>>Gold</option>
+                <option value="Platinum"<?php if (isset($_SESSION['selected_package']) && $_SESSION['selected_package'] == 'Platinum') { echo ' selected'; } ?>>Platinum</option>
+            </select>
+
       </div>
       <div>
         <label for="select-event">Type of event *</label>
@@ -138,13 +159,12 @@ if(isset($_POST['submit'])){
           placeholder="Select event"
         >
           <option value="">select</option>
-
-          <option value="Birthday">Birthday</option>
-          <option value="Baby Shower">Baby shower</option>
-          <option value="Bachelor party">Bachelor party</option>
-          <option value="Graduation">Graduation</option>
-          <option value="Corporate event">Corporate event</option>
-          <option value="Wedding">Wedding</option>
+            <option value="Birthday"<?php if (isset($_SESSION['selected_event_type']) && $_SESSION['selected_event_type'] == 'Birthday') { echo ' selected'; } ?>>Birthday</option>
+            <option value="Baby Shower"<?php if (isset($_SESSION['selected_event_type']) && $_SESSION['selected_event_type'] == 'Baby Shower') { echo ' selected'; } ?>>Baby Shower</option>
+            <option value="Bachelor party"<?php if (isset($_SESSION['selected_event_type']) && $_SESSION['selected_event_type'] == 'Bachelor party') { echo ' selected'; } ?>>Bachelor party</option>
+            <option value="Graduation"<?php if (isset($_SESSION['selected_event_type']) && $_SESSION['selected_event_type'] == 'Graduation') { echo ' selected'; } ?>>Graduation</option>
+            <option value="Corporate event"<?php if (isset($_SESSION['selected_event_type']) && $_SESSION['selected_event_type'] == 'Corporate event') { echo ' selected'; } ?>>Corporate event</option>
+            <option value="Wedding"<?php if (isset($_SESSION['selected_event_type']) && $_SESSION['selected_event_type'] == 'Wedding') { echo ' selected'; } ?>>Wedding</option>
         </select>
       </div>
       <div>
@@ -154,6 +174,7 @@ if(isset($_POST['submit'])){
           required
           type="date"
           placeholder="Choose event date"
+          value="<?=$_SESSION['date'] ?? '' ?>"
         />
         <div>
           <label for="email">Time of Event *</label>
@@ -161,7 +182,7 @@ if(isset($_POST['submit'])){
             name="time"
             required
             type="time"
-            placeholder="me@example.com"
+            value="<?=$_SESSION['time'] ?? '' ?>"
           />
         </div>
       </div>
@@ -172,16 +193,17 @@ if(isset($_POST['submit'])){
           required
           type="text"
           placeholder="Number of guests"
+          value="<?=$_SESSION['guests'] ?? '' ?>"
         />
       </div>
       <div>
         <label for="add-info">Additional information</label>
-        <textarea id="add-info" name="add-info"></textarea>
+        <textarea id="add-info" name="add-info"><?=$_SESSION['add-info'] ?? '' ?></textarea>
       </div>
       <div class="btn-form">
           <button type="submit" name="submit" class="form-btn">Book Event</button>
       </div>
-      <a href="packages.
+      <a href="../packages.php
       " class="back"> &larr; Back<a/>
     </form>
   </body>
