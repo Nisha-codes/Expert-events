@@ -34,6 +34,7 @@ $ php -S localhost:5000
 ```
 
 
+You should be able to visit your app at your laravel app base url e.g  http://localhost:5000 
 
 ## Assumptions/Suggestions/Decisions
 While creating the app the following Assumptions/Decisions were made
