@@ -1,4 +1,4 @@
-
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="pack">
-  <?php
-    include 'navbar.php'
-  ?>
+  <?php include_once 'includes/navbar.php' ?>
+
     <section class="container">
       <h2 class="center-text welcome mt">Our Packages</h2>
 
