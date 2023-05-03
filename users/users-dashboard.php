@@ -8,6 +8,7 @@ if(!isset($_SESSION['auth_user'])){
 
 $auth_user_id = $_SESSION['auth_user']['id'];
 $no_of_events = 0;
+$no_of_users = 0;
 
 try {
     $fetchEventsSql = "select * from events where user_id = '$auth_user_id' ";

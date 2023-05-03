@@ -35,6 +35,9 @@ if(isset($_POST['submit'])){
     elseif($password == ''){
         $error = 'Password must not be empty';
     }
+    elseif(strlen($password) < 6 || strlen($password)  > 16 ){
+        $error = 'Password must be between 6-16 characters';
+    }
     elseif($cpassword == ''){
         $error = 'Confirm Password ';
     }

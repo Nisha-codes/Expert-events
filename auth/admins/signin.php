@@ -1,13 +1,12 @@
 <?php
 
-
 $error = '';
 
 
 session_start();
 
-if(isset($_SESSION['auth_user'])){
-    header("Location:../../users/users-dashboard.php");
+if(isset($_SESSION['auth_admin'])){
+    header("Location:../../admins/admin-dashboard.php");
 }
 
 if(isset($_POST['submit'])){
@@ -30,43 +29,32 @@ if(isset($_POST['submit'])){
         $error = 'Password must not be empty';
     }
 
-
     else{
 
         $cleanEmail = cleanUserInput($_POST['email']);
         $cleanPassword = sha1(cleanUserInput($_POST['password']));
 
-        $sql = "select * from users where email='$cleanEmail' and password='$cleanPassword'";
+        $sql = "select * from admins where email='$cleanEmail' and password='$cleanPassword'";
         $dbc = mysqli_query($con,$sql);
         if($dbc){
             if($dbc->num_rows>0){
                 unset($_SESSION['email']);
                 while($row = mysqli_fetch_array($dbc)){
-                    // just in a case we log in as a user on a browser where we've already logged in as an admin while testing
-                    if(isset($_SESSION['auth_admin'])){
-                        unset($_SESSION['auth_admin']);
+                    // just in a case we log in as an admin  on a browser where we've already logged in as an user while testing
+                    if(isset($_SESSION['auth_user'])){
+                        unset($_SESSION['auth_user']);
                     }
-                    $_SESSION['auth_user']=[
+                    $_SESSION['auth_admin']=[
                         'firstname'=> (explode(' ',$row['full_name']))[0],
                         'id'=>$row['id'],
                         'email'=> $row['email'],
                     ];
                 }
 
-                if(isset($_SESSION['booking']) && $_SESSION['booking'] == 1) {
-                    unset($_SESSION['booking']);
-                    echo "
-                      <script type=\"text/javascript\">
-                        // alert('You are logged in');
-                        window.location='packages.php'
-                      </script>";
-                } else{
-                    echo "
-                      <script type=\"text/javascript\">
-                        // alert('You are logged in');
-                        window.location='../../users/users-dashboard.php'
-                      </script>";
-                }
+                echo "
+                  <script type=\"text/javascript\">
+                    window.location='../../admins/admin-dashboard.php'
+                  </script>";
 
             }
             else{
@@ -101,8 +89,8 @@ if(isset($_POST['submit'])){
             <div id="error"><?=$error?></div>
         </div>
     <?php }?>
-
-    <div>
+    <h1>Admin Login</h1>
+    <div style="margin-top: 20px">
         <label for="email">Email address</label>
         <input
                 name="email"
