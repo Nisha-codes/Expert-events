@@ -20,11 +20,11 @@ $ git clone *remote repository url*
 
 
 ### Environment
-Configure your database in `/includes/database.php` for  based on your MYSQL database configuration
+Configure your database in `/includes/database.php`  based on your MYSQL database configuration
 
 ```  
 
-$con = mysqli_connect('localhost', 'root','','database_name');
+$con = mysqli_connect('database-host', 'database-user','database-password','database_name');
 ```
 
 ### STARTING SERVER
@@ -34,7 +34,7 @@ $ php -S localhost:5000
 ```
 
 
-You should be able to visit your app at your laravel app base url e.g  http://localhost:5000 
+You should be able to visit your app at http://localhost:5000 
 
 ## Assumptions/Suggestions/Decisions
 While creating the app the following Assumptions/Decisions were made
