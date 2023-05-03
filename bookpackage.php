@@ -87,9 +87,9 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expert-Events</title>
     <link rel="stylesheet" href="style.css" />
-      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
   </head>
   <body class="bookpackage">
@@ -97,9 +97,9 @@ if(isset($_POST['submit'])){
         <?php
         if($error!=''){
             ?>
-            <div class="alert alert-danger  fade show" role="alert">
+            <!-- <div class="alert alert-danger  fade show" role="alert"> -->
                 <div id="error"><?=$error?></div>
-            </div>
+            <!-- </div> -->
         <?php }?>
       <div>
           <label for="package">Choose Package *</span></label>
@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
           <option value="">select</option>
 
           <option value="Birthday">Birthday</option>
-          <option value="Baby Shower">Wedding</option>
+          <option value="Baby Shower">Baby shower</option>
           <option value="Bachelor party">Bachelor party</option>
           <option value="Graduation">Graduation</option>
           <option value="Corporate event">Corporate event</option>
@@ -168,6 +168,8 @@ if(isset($_POST['submit'])){
       <div class="btn-form">
           <button type="submit" name="submit" class="form-btn">Book Event</button>
       </div>
+      <a href="packages.
+      " class="back"> &larr; Back<a/>
     </form>
   </body>
 </html>

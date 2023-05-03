@@ -263,6 +263,11 @@ td a {
   cursor: pointer;
 }
 
+.back {
+  color: #fdf2e9;
+  font-weight: 600;
+}
+
 .guest-btn {
   margin: 0;
   font-size: 14px;
@@ -293,7 +298,10 @@ td a {
 
 .pack {
   background-color: #f9f4f1;
-  margin-top: 25px;
+}
+
+.mt {
+  margin-top: 20px;
 }
 
 .card-ul {

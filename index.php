@@ -35,9 +35,7 @@ $logged_in  = isset($_SESSION['auth_user']);
             ?>
             <li><a class="main-nav-link" href="signout.php">Logout</a></li>
             <?php }?>
-          <!-- <li>
-            <a class="main-nav-link nav-cta" href="#cta">Try for free!</a>
-          </li> -->
+          
         </ul>
       </nav>
     </header>

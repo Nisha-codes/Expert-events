@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,13 +9,16 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="pack">
+  <?php
+    include 'navbar.php'
+  ?>
     <section class="container">
-      <h2 class="center-text welcome">Our Packages</h2>
+      <h2 class="center-text welcome mt">Our Packages</h2>
 
       <div class="packages">
         <div class="package-card p1">
           <p class="package-heading">BRONZE</p>
-          <p class="dollar">$<span class="price">150</span></p>
+          <p class="dollar">$<span class="price">250</span></p>
           <ul class="card-ul">
             <li class="card-list">Venue Sourcing</li>
             <li class="card-list">Catering services</li>
@@ -26,7 +30,7 @@
         </div>
         <div class="package-card p2">
           <p class="package-heading">SILVER</p>
-          <p class="dollar">$ <span class="price">250</span></p>
+          <p class="dollar">$ <span class="price">450</span></p>
           <ul class="card-ul">
             <li class="card-list">
               Venue Sourcing
@@ -47,7 +51,7 @@
         </div>
         <div class="package-card p3">
           <p class="package-heading">GOLD</p>
-          <p class="dollar">$ <span class="price">250</span></p>
+          <p class="dollar">$ <span class="price">600</span></p>
           <ul class="card-ul">
             <li class="card-list">
               Venue sourcing
@@ -72,7 +76,7 @@
         </div>
         <div class="package-card p4">
           <p class="package-heading">PLATINUM</p>
-          <p class="dollar">$<span class="price">250</span></p>
+          <p class="dollar">$<span class="price">850</span></p>
           <ul class="card-ul">
             <li class="card-list">
               Venue Sourcing

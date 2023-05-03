@@ -50,18 +50,18 @@ if(isset($_POST['submit'])){
                         'email'=> $row['email'],
                     ];
                 }
-                if(isset($_SESSION['booking']) && $_SESSION['booking'] ==1){
+
+                if(isset($_SESSION['booking']) && $_SESSION['booking'] == 1) {
                     unset($_SESSION['booking']);
                     echo "
                       <script type=\"text/javascript\">
-                        alert('You are logged in');
-                        window.location='bookpackage.php'
+                        // alert('You are logged in');
+                        window.location='packages.php'
                       </script>";
-                }
-                else{
+                } else{
                     echo "
                       <script type=\"text/javascript\">
-                        alert('You are logged in');
+                        // alert('You are logged in');
                         window.location='../../index.php'
                       </script>";
                 }
