@@ -9,7 +9,7 @@ This project was built with HTML,CSS,PHP and MYSQL .
 ## Running the App
 To run the App, you must have:
 - **PHP** (https://www.php.net/downloads)
-- **PostgreSQL** (https://www.mysql.com/downloads/)
+- **MySQL** (https://www.mysql.com/downloads/)
 
 Clone the repository to your local machine using the command
 ```console
